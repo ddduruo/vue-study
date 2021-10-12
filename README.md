@@ -1,24 +1,9 @@
-# vue-use
+## 动画特效
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+1. transition  实现路由切换动画
+   * App.vue transision
+   * router index   router-lin
+   * list.vue
+   * detail.vue
+   * home-> list -> detail
+   * detail->list -> home

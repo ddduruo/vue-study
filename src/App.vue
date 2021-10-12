@@ -1,17 +1,25 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <transition :name="transitionName">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import {Router} from 'vue-router'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      transitionName: null
+    }
+  },
+  watch: {
+    $route(to, from) {
+        this.transitionName = to.meta.depth > from.meta.depth? "slide-left": "slide-right"
+    }
   }
 }
 </script>
@@ -25,4 +33,25 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+    will-change: transform;
+    transition: transform 350ms;
+    position: absolute;
+    overflow: hidden;
+}
+
+.slide-right-enter,
+.slide-left-leave-active {
+    transform: translate(-100%, 0);
+}
+
+.slide-left-enter,
+.slide-right-leave-active {
+    transform: translate(100%, 0);
+}
+
+
 </style>
